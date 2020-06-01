@@ -2,6 +2,8 @@
 
 Github Repo: https://github.com/ctacedo/employee-tracker
 
+Video link:  chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/ng/app/app.html#/files/e3daf0b3-ec22-42d4-ye6a-7f81df741376
+
 Your Task
 Developers frequently have to create interfaces that make it easy for non-developers to view and interact with information stored in databases. These interfaces are called content management systems (CMS). Your challenge this week is to build a command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
