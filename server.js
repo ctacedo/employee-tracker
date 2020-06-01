@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const cTable = require('console.table');
-var mysql = require("mysql");
+var mysql = require("mysql2");
 const util = require("util");
 
 // Logo requirements: 
@@ -13,8 +13,8 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "Cheeseme1",
-    database: "Employee_Tracker"
+    password: "Chaos00$",
+    database: "employee_tracker"
 });
 
 connection.connect((err) => {
@@ -42,6 +42,8 @@ function runSearch() {
                 "View all employees",
                 "View all employees by department",
                 "View all employees by manager",
+                "View all departments",
+                "View all roles",
                 "Add employee",
                 "Add Department",
                 "Add Role",
@@ -49,7 +51,7 @@ function runSearch() {
                 "Update employee role",
                 "Update employee manager"
             ]
-            // Promise 
+            
 
         }).then(answers => {
             // Start switch statement
@@ -75,6 +77,22 @@ function runSearch() {
                     runSearch();
 
                     break;
+
+                case "View all departments":
+
+                        byDeparts();
+                        runSearch();
+    
+                    break;
+
+                case "View all roles":
+
+                        byRoles();
+                        runSearch();
+    
+                    break;
+
+                    
 
                 // Start new case
                 // Takes further input
@@ -288,6 +306,32 @@ function byManager() {
             if (error) throw error
             console.table(manager)
         })
+};
+
+// "View all departments",
+function byDeparts() {
+
+    var results = connection.query("SELECT department.d_name FROM department LEFT JOIN department ON department.d_name",
+
+
+        function (error, results) {
+            if (error) throw error
+            console.table(results)
+        })
+
+};
+
+// "View all roles",
+function byRoles() {
+
+    var results = connection.query("SELECT department.d_name FROM department LEFT JOIN department ON department.d_name",
+
+
+        function (error, results) {
+            if (error) throw error
+            console.table(results)
+        })
+
 };
 
 
